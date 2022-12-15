@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./edit.css";
 const EditPage = () => {
     const avaUrl = [
@@ -11,6 +12,11 @@ const EditPage = () => {
         "https://preview.redd.it/cpwkbke13vv51.png?auto=webp&s=9158e49b35ad2581d840efd2a013a9ead06abbc7",
         "https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990",
     ];
+    const [name, setName] = useState('tharod');
+    const [age, setAge] = useState(23);
+    const [about, setAbout] = useState("I'm a software engineer");
+    const [theme, setTheme] = useState("#ff9051");
+    const [url, setUrl] = useState("https://i.redd.it/snoovatar/avatars/8658e16c-55fa-486f-b7c7-00726de2e742.png");
     return (
         <>
             <form action="">
@@ -19,20 +25,24 @@ const EditPage = () => {
                     <div className="edit-profile">Edit Profile</div>
                     <div className="input-container">
                         <label htmlFor="">Display name</label>
-                        <input type="text" placeholder="tharod" />
+                        <input type="text" placeholder="tharod" onChange={(e) => setName(e.target.value)}/>
                         <label htmlFor="">Age</label>
-                        <input type="text" placeholder="23" />
+                        <input type="text" placeholder="23" onChange={(e) => setAge(e.target.value)}/>
                         <label htmlFor="">About</label>
-                        <textarea className="input-about" />
+                        <textarea className="input-about" onChange={(e) => setAbout(e.target.value)}/>
                         <label htmlFor="">Profile Picture</label>
                         <div className="input-image-container">
                             {avaUrl.map((ava) => {
                                 return (
                                     <>
-                                        <img src={ava} className="input-image" alt="" />
+                                        <img onClick={(e) => setUrl(e.target.src)} src={ava} className="input-image" alt="" />
                                     </>
                                 );
                             })}
+                        </div>
+                        <div className="theme-container">
+                            <label htmlFor="">Theme</label>
+                            <input type="color" className="theme-color" onChange={(e) => setTheme(e.target.value)}/>
                         </div>
                     </div>
                 </section>
