@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "../InputFields/Input";
 import "./edit.css";
 const EditPage = () => {
     const avaUrl = [
@@ -24,12 +25,9 @@ const EditPage = () => {
                     <button className="close">Save</button>
                     <div className="edit-profile">Edit Profile</div>
                     <div className="input-container">
-                        <label htmlFor="">Display name</label>
-                        <input type="text" placeholder="tharod" onChange={(e) => setName(e.target.value)}/>
-                        <label htmlFor="">Age</label>
-                        <input type="text" placeholder="23" onChange={(e) => setAge(e.target.value)}/>
-                        <label htmlFor="">About</label>
-                        <textarea className="input-about" onChange={(e) => setAbout(e.target.value)}/>
+                        <Input label="Display name" data={name} setData={setName} />
+                        <Input label="Age" data={age} setData={setAge} />
+                        <Input inputType="textarea" classStyle="input-about" label="About" data={about} setData={setAbout} />
                         <label htmlFor="">Profile Picture</label>
                         <div className="input-image-container">
                             {avaUrl.map((ava) => {
