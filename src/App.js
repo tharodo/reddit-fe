@@ -1,9 +1,13 @@
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import EditPage from "./components/EditPage/EditPage";
 
 function App() {
+  const [isEdit, setEdit] = useState(false);
   return (
     <div className="App">
-
+      {isEdit ? <EditPage /> : <Header setEdit={setEdit} />}
     </div>
   );
 }
